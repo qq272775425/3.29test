@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		@media screen and (max-width: 414px){
+			.right{
+				display: none;
+			}
+			.container{
+				padding:0 10px 
+			}
+
+		}		
+		body{
+			background-color: rgba(7,17,27,0.2);
+			height: 100%;
+		}
+		.header{
+			height: 30px;
+			width: 100%;
+			background-color: #fff;
+		}
+		.container{
+			width: 768px;
+			margin: 0 auto;
+		}
+		.left,.right{
+			display: flex;
+			flex-direction: column;
+			height: 500px;
+		}		
+		.left{			
+			width: 500px;
+			float: left;  
+		}
+		.right{
+			margin-left: 510px;
+		}
+		.nav,.content,.footer,.box1,.box2{
+			width: 100%;
+			margin-top: 10px;
+			background-color: #fff;
+		}
+		.nav{
+			
+			min-height: 40px;			
+		}
+		.content{
+			
+			min-height: 150px;			
+		}
+		.footer{			
+			flex: 1;			
+		}
+		.box1{						
+			height: 200px;
+		}
+		.box2{						
+			flex: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">.header</div>
+	<div class="container">
+		<div class="left">
+			<div class="nav">.nav</div>
+			<div class="content">.box1</div>
+			<div class="footer">.box2</div>	
+		</div>
+		<div class="right">
+			<div class="box1">.box1</div>
+			<div class="box2">.box2</div>
+		</div>
+	</div>
+</body>
+</html>

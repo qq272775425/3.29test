@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	function Ajax(url,opt,methods) {
+		return new Promise(function(resove,reject){
+			methods = methods || 'POST';
+			var xmlHttp = null;
+			if (XMLHttpRequest) {
+				xmlHttp = new XMLHttpRequest();
+			} else {
+				xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
+			};
+			var params = [];
+			for (var key in opt){
+				if(!!opt[key] || opt[key] === 0){
+					params.push(key + '=' + opt[key]);
+				}
+			};
+			var postData = params.join('&');
+			if (methods.toUpperCase() === 'POST') {
+				xmlHttp.open('POST', url, true);
+				xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+				xmlHttp.send(postData);
+			}else if (methods.toUpperCase() === 'GET') {
+				xmlHttp.open('GET', url + '?' + postData, true);
+				xmlHttp.send(null);
+			}else if(methods.toUpperCase() === 'PUT'){
+				xmlHttp.open('PUT', url + '?' + postData, true);
+				xmlHttp.send(null);
+			}else if(methods.toUpperCase() === 'DELETE'){
+				xmlHttp.open('DELETE', url + '?' + postData, true);
+				xmlHttp.send(null);
+			}
+			xmlHttp.onreadystatechange = function () {
+				if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+					resove(JSON.parse(xmlHttp.responseText));
+				}
+			};
+		});
+  	}
+</script>
+</body>
+</html>
